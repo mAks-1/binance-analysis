@@ -7,15 +7,15 @@ class StrategyBase(ABC):
 
     @abstractmethod
     def generate_signals(self) -> pd.DataFrame:
-        """Генерація торгових сигналів."""
+        """Генерация торговых сигналов."""
         pass
 
     @abstractmethod
     def run_backtest(self) -> pd.DataFrame:
-        """Запуск бектесту."""
+        """Запуск бектеста."""
         pass
 
     @abstractmethod
     def get_metrics(self) -> dict:
-        """Розрахунок метрик."""
+        """Расчет метрик."""
         pass
