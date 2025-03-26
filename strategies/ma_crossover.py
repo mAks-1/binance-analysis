@@ -11,7 +11,7 @@ class MACrossover(StrategyBase):
         price_data: pd.DataFrame,
         pair: str = None,
         short_window: int = 25,
-        long_window: int = 80,
+        long_window: int = 100,
     ):
         """Ініціалізує стратегію з параметрами."""
         super().__init__(price_data)

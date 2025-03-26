@@ -57,7 +57,7 @@ class RSIWithBB(StrategyBase):
             exits=long_exit | short_exit,
             fees=0.0005,
             slippage=0.001,  # Сліппейдж 0.1%
-            sl_stop=0.016,  # Stop-Loss 0.8%
+            sl_stop=0.01,  # Stop-Loss 0.8%
             tp_stop=0.016,  # Take-Profit 4%
             freq="1min",  # Таймфрейм
             direction="both",  # Дозволити лонги та шорти
