@@ -33,3 +33,21 @@ class Backtester:
                 "strategy_name": strategy.__class__.__name__,
                 "error": str(e)
             }
+
+    async def run_all(self) -> pd.DataFrame:
+        """Асинхронно виконує всі стратегії паралельно"""
+        tasks = [self._run_strategy(strategy) for strategy in self.strategies]
+        results = await asyncio.gather(*tasks)
+
+        # Фільтруємо пусті результати
+        valid_results = [r for r in results if r is not None]
+        return pd.DataFrame(valid_results)
+
+    async def save_results(self, df: pd.DataFrame, path: str = "results/metrics.csv"):
+        """Асинхронне збереження результатів"""
+        loop = asyncio.get_event_loop()
+        await loop.run_in_executor(
+            None,
+            lambda: df.to_csv(path, index=False)
+        )
+        print(f"✅ Результати збережено у {path}")
